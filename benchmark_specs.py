@@ -19,18 +19,21 @@ PUBLIC_EPISODE_LABELS = (
 def build_demo_segments(config: dict[str, Any]) -> list[list[float]]:
     """Return an easy-to-read command script for demo videos.
 
-    The demo is intentionally human-readable:
-    stand -> slow forward -> medium forward -> fast forward -> slow forward -> stand.
+    The demo is intentionally choreographed from velocity commands:
+    stand -> side shuffles -> pivots -> moonwalk -> figure-eight arcs -> stand.
     """
     demo_cfg = config["demo_rollout"]
     if "segments" in demo_cfg and demo_cfg["segments"]:
         return [[float(x) for x in segment] for segment in demo_cfg["segments"]]
     return [
         [0.0, 0.0, 0.0],
-        [0.20, 0.0, 0.0],
-        [0.40, 0.0, 0.0],
-        [0.60, 0.0, 0.0],
-        [0.30, 0.0, 0.0],
+        [0.0, 0.20, 0.0],
+        [0.0, -0.20, 0.0],
+        [0.0, 0.0, 0.60],
+        [0.0, 0.0, -0.60],
+        [-0.25, 0.0, 0.0],
+        [0.50, 0.15, 0.40],
+        [0.50, -0.15, -0.40],
         [0.0, 0.0, 0.0],
     ]
 
