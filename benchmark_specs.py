@@ -46,27 +46,39 @@ def public_command_script(safe_ranges: dict[str, list[float]], episode_idx: int)
 
     scripts = [
         [
-            [0.0, 0.0, 0.0],
+            [0.30 * vx_max, 0.0, 0.0],
             [0.35 * vx_max, 0.0, 0.0],
             [0.60 * vx_max, 0.0, 0.0],
+            [0.45 * vx_max, 0.12 * vy_max, 0.20 * yaw_max],
+            [0.50 * vx_max, -0.12 * vy_max, -0.20 * yaw_max],
+            [-0.20 * vx_max, 0.0, 0.0],
             [0.0, 0.0, 0.0],
         ],
         [
-            [0.0, 0.0, 0.0],
+            [0.20 * vx_max, 0.30 * vy_max, 0.0],
             [0.0, 0.40 * vy_max, 0.0],
             [0.0, 0.70 * vy_max, 0.0],
+            [0.0, -0.50 * vy_max, 0.0],
+            [0.15 * vx_max, 0.60 * vy_max, 0.20 * yaw_max],
+            [0.15 * vx_max, -0.60 * vy_max, -0.20 * yaw_max],
             [0.0, 0.0, 0.0],
         ],
         [
-            [0.0, 0.0, 0.0],
+            [0.25 * vx_max, 0.0, 0.30 * yaw_max],
             [0.0, 0.0, 0.40 * yaw_max],
             [0.0, 0.0, 0.70 * yaw_max],
+            [0.0, 0.0, -0.45 * yaw_max],
+            [0.30 * vx_max, 0.0, 0.55 * yaw_max],
+            [0.30 * vx_max, 0.0, -0.55 * yaw_max],
             [0.0, 0.0, 0.0],
         ],
         [
-            [0.0, 0.0, 0.0],
+            [0.30 * vx_max, 0.25 * vy_max, 0.20 * yaw_max],
             [0.35 * vx_max, 0.35 * vy_max, 0.25 * yaw_max],
             [0.60 * vx_max, 0.50 * vy_max, 0.40 * yaw_max],
+            [0.45 * vx_max, -0.50 * vy_max, -0.40 * yaw_max],
+            [-0.15 * vx_max, 0.25 * vy_max, -0.30 * yaw_max],
+            [0.40 * vx_max, -0.25 * vy_max, 0.30 * yaw_max],
             [0.0, 0.0, 0.0],
         ],
     ]
