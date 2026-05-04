@@ -165,8 +165,10 @@ def apply_stage_config(env_cfg: Any, ppo_cfg: Any, config: dict[str, Any], stage
         env_cfg.command_config.student_stage2_goal_min = list(stage_cfg["student_stage2_goal"]["command_range"]["min"])
         env_cfg.command_config.student_stage2_goal_max = list(stage_cfg["student_stage2_goal"]["command_range"]["max"])
         env_cfg.command_config.student_stage2_goal_b = list(stage_cfg["student_stage2_goal"]["command_keep_prob"])
-    env_cfg.reward_config.scales.action_rate = float(stage_cfg["reward_scales"]["action_rate"])
-    env_cfg.reward_config.scales.energy = float(stage_cfg["reward_scales"]["energy"])
+    for reward_name, reward_scale in stage_cfg.get("reward_scales", {}).items():
+        if reward_name not in env_cfg.reward_config.scales:
+            raise KeyError(f"Unknown reward scale '{reward_name}' in {stage_name}")
+        env_cfg.reward_config.scales[reward_name] = float(reward_scale)
 
     stage_steps_key = f"{stage_name}_num_timesteps"
     ppo_cfg.num_timesteps = int(runtime_overrides.get(stage_steps_key, stage_cfg["num_timesteps"]))
